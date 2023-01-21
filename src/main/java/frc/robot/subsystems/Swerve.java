@@ -54,7 +54,7 @@ public class Swerve extends SubsystemBase {
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, Constants.Swerve.maxSpeed);
 
     for (SwerveModule mod : mSwerveMods) {
-      mod.setDesiredState(swerveModuleStates[mod.moduleNumber], isOpenLoop);
+      mod.setDesiredState(swerveModuleStates[mod.getModuleNumber()], isOpenLoop);
     }
   }
 
@@ -63,7 +63,7 @@ public class Swerve extends SubsystemBase {
     SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, Constants.Swerve.maxSpeed);
 
     for (SwerveModule mod : mSwerveMods) {
-      mod.setDesiredState(desiredStates[mod.moduleNumber], false);
+      mod.setDesiredState(desiredStates[mod.getModuleNumber()], false);
     }
   }
 
@@ -78,7 +78,7 @@ public class Swerve extends SubsystemBase {
   public SwerveModuleState[] getModuleStates() {
     SwerveModuleState[] states = new SwerveModuleState[4];
     for (SwerveModule mod : mSwerveMods) {
-      states[mod.moduleNumber] = mod.getState();
+      states[mod.getModuleNumber()] = mod.getState();
     }
     return states;
   }
@@ -86,7 +86,7 @@ public class Swerve extends SubsystemBase {
   public SwerveModulePosition[] getModulePositions() {
     SwerveModulePosition[] positions = new SwerveModulePosition[4];
     for (SwerveModule mod : mSwerveMods) {
-      positions[mod.moduleNumber] = mod.getPosition();
+      positions[mod.getModuleNumber()] = mod.getPosition();
     }
     return positions;
   }
@@ -113,11 +113,11 @@ public class Swerve extends SubsystemBase {
 
     for (SwerveModule mod : mSwerveMods) {
       SmartDashboard.putNumber(
-          "Mod " + mod.moduleNumber + " Cancoder", mod.getCanCoder().getDegrees());
+          "Mod " + mod.getModuleNumber() + " Cancoder", mod.getCanCoder().getDegrees());
       SmartDashboard.putNumber(
-          "Mod " + mod.moduleNumber + " Integrated", mod.getPosition().angle.getDegrees());
+          "Mod " + mod.getModuleNumber() + " Integrated", mod.getPosition().angle.getDegrees());
       SmartDashboard.putNumber(
-          "Mod " + mod.moduleNumber + " Velocity", mod.getState().speedMetersPerSecond);
+          "Mod " + mod.getModuleNumber() + " Velocity", mod.getState().speedMetersPerSecond);
     }
   }
 }
