@@ -17,18 +17,18 @@ public final class Constants {
 
   public static final class Swerve {
     public static final ControlAreaNetworkDevice pigeon =
-        new ControlAreaNetworkDevice(FIXME, "drivetrain");
+        new ControlAreaNetworkDevice(7, "drivetrain");
     public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
 
     public static final COTSFalconSwerveConstants
         chosenModule = // TODO: This must be tuned to specific robot
-        COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L2);
+        COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L3);
 
     /* Drivetrain Constants */
     public static final double trackWidth =
-        Units.inchesToMeters(FIXME); // TODO: This must be tuned to specific robot
+        Units.inchesToMeters(22.75); // TODO: This must be tuned to specific robot
     public static final double wheelBase =
-        Units.inchesToMeters(FIXME); // TODO: This must be tuned to specific robot
+        Units.inchesToMeters(22.75); // TODO: This must be tuned to specific robot
     public static final double wheelCircumference = chosenModule.wheelCircumference;
 
     /* Swerve Kinematics
@@ -62,9 +62,8 @@ public final class Constants {
     public static final double drivePeakCurrentDuration = 0.1;
     public static final boolean driveEnableCurrentLimit = true;
 
-    /* These values are used by the drive falcon to ramp in open loop and closed loop driving.
-     * We found a small open loop ramp (0.25) helps with tread wear, tipping, etc */
-    public static final double openLoopRamp = 0.25;
+    /* These values are used to determine how many seconds to ramp in open loop and closed loop driving. Higher values reduce gear clashing on sudden changes. */
+    public static final double openLoopRamp = 0.5;
     public static final double closedLoopRamp = 0.0;
 
     /* Angle Motor P Values */
@@ -94,7 +93,7 @@ public final class Constants {
 
     /* Neutral Modes */
     public static final NeutralMode angleNeutralMode = NeutralMode.Coast;
-    public static final NeutralMode driveNeutralMode = NeutralMode.Brake;
+    public static final NeutralMode driveNeutralMode = NeutralMode.Coast;
 
     /* Module Specific Constants */
     /* Front Left Module - Module 0 */
@@ -105,7 +104,7 @@ public final class Constants {
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
       public static final ControlAreaNetworkDevice canCoder =
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
-      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0.0);
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(335.43);
       public static final SwerveModuleConstants constants =
           new SwerveModuleConstants(driveMotor, angleMotor, canCoder, angleOffset);
     }
@@ -118,7 +117,7 @@ public final class Constants {
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
       public static final ControlAreaNetworkDevice canCoder =
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
-      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0.0);
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(253.74);
       public static final SwerveModuleConstants constants =
           new SwerveModuleConstants(driveMotor, angleMotor, canCoder, angleOffset);
     }
@@ -131,7 +130,7 @@ public final class Constants {
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
       public static final ControlAreaNetworkDevice canCoder =
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
-      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0.0);
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(162.15);
       public static final SwerveModuleConstants constants =
           new SwerveModuleConstants(driveMotor, angleMotor, canCoder, angleOffset);
     }
@@ -144,7 +143,7 @@ public final class Constants {
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
       public static final ControlAreaNetworkDevice canCoder =
           new ControlAreaNetworkDevice(FIXME, "drivetrain");
-      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0.0);
+      public static final Rotation2d angleOffset = Rotation2d.fromDegrees(186.715);
       public static final SwerveModuleConstants constants =
           new SwerveModuleConstants(driveMotor, angleMotor, canCoder, angleOffset);
     }

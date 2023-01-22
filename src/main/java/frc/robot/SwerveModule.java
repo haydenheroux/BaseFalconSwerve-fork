@@ -4,7 +4,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.sensors.CANCoder;
-
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
@@ -59,7 +58,8 @@ public class SwerveModule {
   public void resetToAbsolute() {
     final double absolutePosition =
         Conversions.degreesToFalcon(
-            getCanCoder().getDegrees() - m_angleOffset.getDegrees(), Constants.Swerve.angleGearRatio);
+            getCanCoder().getDegrees() - m_angleOffset.getDegrees(),
+            Constants.Swerve.angleGearRatio);
     m_angleMotor.setSelectedSensorPosition(absolutePosition);
   }
 
